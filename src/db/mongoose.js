@@ -20,14 +20,14 @@ mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api', {
      }
  })
 
-//  const first = new Tasks({
-//      discription:'Cleaning my room',
+ const first = new Tasks({
+     discription:'Cleaning my room',
      
-//  })
+ })
 
 
-//  first.save().then(() => {
-//     console.log(first)
-//  }).catch((error) => {
-//      console.log('Error!' , error)
-//  })
+ first.save().then(() => {
+    console.log(first)
+ }).catch((error) => {
+     console.log('Error!' , error)
+ })
