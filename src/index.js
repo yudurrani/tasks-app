@@ -28,7 +28,7 @@ app.get('/users',(req, res) => {
 })
 
 app.get('/users/:id', (req, res) => {
-    const _id = req.id
+    const _id = req.params.id
    
 
     User.findById(_id).then((user) => {
