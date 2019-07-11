@@ -49,6 +49,20 @@ app.get('/users/:id', async(req, res) => {
 
 })
 
+app.patch('/user/:id', async (req, res) => {
+    try{
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, {new : true, runValidators: true})
+
+        if(!user){
+            return res.status(404).send()
+        }
+
+        res.send(user)
+    } catch(e){
+        res.status(400).send(e)
+    }
+})
+
 app.post('/tasks', async(req, res) => {
     const task = new Task(req.body)
 
@@ -58,21 +72,7 @@ app.post('/tasks', async(req, res) => {
     } catch(e){
         res.status(400).send(e)
     }
-    // async(req, res) => {
-    //     const user = new User(req.body)
-    
-    //     try {
-    //         await user.save()
-    //         res.status(201).send(user)
-    //     } catch (e){
-    //         res.status(400).send(e)
-    //     }
 
-    // task.save().then(() => {
-    //     res.status(201).send(task)
-    // }).catch((e) => {
-    //     res.status(400).send(e)
-    // })
 })
 
 app.get('/tasks', async(req, res) => {
@@ -84,20 +84,6 @@ app.get('/tasks', async(req, res) => {
         res.status(500).send()
     }
    
-    // try{
-    //     const user = await User.find({})
-    //     res.send(user)
-    // } catch(e){
-    //     res.status(500).send()
-    // }
-    // Task.find({}).then((tasks) =>{
-    //     res.send(tasks)
-    // }).catch((e) => {
-    //     res.status(500).send()
-    // })
-    // const fetchAll = req.params.all
-
-    // Task.findById
 })
 
 app.get('/tasks/:id', async(req, res) => {
@@ -117,15 +103,7 @@ app.get('/tasks/:id', async(req, res) => {
         res.status(500).send()
     }
 
-    // Task.findById(_id).then((task)=> {
-    //     if(!task){
-    //         return res.status(404).send()
 
-    //     }
-    //     res.send(task)
-    // }).catch((e) => {
-    //     res.status(500).send()
-    // })
 })
 
 
