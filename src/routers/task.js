@@ -80,9 +80,12 @@ router.delete('/tasks/:id', async(req, res) => {
     if(!task){
         return res.status(404).send()
     }
+
     res.send(task)
-    } catch(e){
+    }
+     catch(e){
         res.status(500).send()
     }
 })
+
 module.exports = router
