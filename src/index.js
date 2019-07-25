@@ -24,6 +24,7 @@ const surveyRouter = require('./routers/survey')
 
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(userRouter)
 app.use(taskRouter)
 app.use(surveyRouter)
