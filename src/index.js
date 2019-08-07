@@ -1,7 +1,5 @@
 const express = require('express')
 require('./db/mongoose')
-const User = require('./models/user')
-const Task = require( './models/task')
 const userRouter = require('./routers/user')
 const taskRouter = require('./routers/task')
 
@@ -34,17 +32,34 @@ app.listen(port, () => {
     console.log('Server is up on port' + port)
 })
 
-const jwt = require('jsonwebtoken')
-
-const myFunction = async () => {
-
-    const token = jwt.sign({ _id:'abc123'}, 'thisismynewcourse', {expiresIn: '7 days'})
-    console.log(token)
+//const Task = require('./models/task')
+const User = require('./models/user')
 
 
-    const data = jwt.verify(token, 'thisismynewcourse')
+const main = async() => {
+    // const task = await Task.findById('5d4a2f32d9f206883c6df10e')
+    // await task.populate('owner').execPopulate()
+    // console.log(task.owner)
+
+    const user = await User.findById('5d4a0b9c7bd979729731d08f')
+    await user.populate('tasks').execPopulate()
+    console.log(user.tasks)
+
+}
+
+main()
+
+// const jwt = require('jsonwebtoken')
+
+// const myFunction = async () => {
+
+//     const token = jwt.sign({ _id:'abc123'}, 'thisismynewcourse', {expiresIn: '7 days'})
+//     console.log(token)
+
+
+//     const data = jwt.verify(token, 'thisismynewcourse')
     
-    console.log(data)
+//     console.log(data)
 
     // const password = 'Red12345!'
     // const hashedPassword = await bcrypt.hash(password, 8)
@@ -54,7 +69,7 @@ const myFunction = async () => {
 
         // const isMatch = await bcrypt.compare('Red12345!', hashedPassword)
         // console.log(isMatch)
-}
+// }
 
-myFunction()
+// myFunction()
 
