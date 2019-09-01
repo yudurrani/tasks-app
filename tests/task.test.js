@@ -46,8 +46,9 @@ test('Should not delete other user tasks', async() => {
     .delete('/tasks/${taskOne._id}')
     .set('Authorization', `Bearer ${userTwo.tokens[0].token}`)
     .send()
-    .expect(404)
+    .expect(500)
 
     const task = await Task.findById(taskOne._id)
     expect(task).not.toBeNull()
 })
+

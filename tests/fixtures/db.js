@@ -52,9 +52,9 @@ const setupDatabase = async()=> {
     await Task.deleteMany()
     await new User(userOne).save()
     await new User(userTwo).save()
-    await new Task(taskOne),save()
-    await new Task(taskTwo),save()
-    await new Task(taskThree),save()
+    await new Task(taskOne).save()
+    await new Task(taskTwo).save()
+    await new Task(taskThree).save()
 }
 
 module.exports = {
