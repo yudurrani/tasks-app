@@ -14,7 +14,7 @@ router.post('/tasks',auth, async(req, res) => {
 
     const task = new Task({
         ...req.body,
-          : req.user._id
+        owner:req.user._id
     })
 
     try{

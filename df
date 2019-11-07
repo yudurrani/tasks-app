@@ -1,0 +1,13 @@
+[1mdiff --git a/src/routers/task.js b/src/routers/task.js[m
+[1mindex 9554d68..b4b0179 100644[m
+[1m--- a/src/routers/task.js[m
+[1m+++ b/src/routers/task.js[m
+[36m@@ -14,7 +14,7 @@[m [mrouter.post('/tasks',auth, async(req, res) => {[m
+ [m
+     const task = new Task({[m
+         ...req.body,[m
+[31m-          : req.user._id[m
+[32m+[m[32m        ...req.user._id[m[41m[m
+     })[m
+ [m
+     try{[m
